@@ -2,19 +2,49 @@
 <img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
 </div>
 
-# Run and deploy your AI Studio app
+# Opotest Penitenciarias
 
-This contains everything you need to run your app locally.
+Aplicación web diseñada para ayudar en la preparación de oposiciones para **Ayudantes de Instituciones Penitenciarias**. Practica con tests interactivos y mejora tus conocimientos.
 
-View your app in AI Studio: https://ai.studio/apps/drive/1t7-deYcWq551Vxu4Zk3HuOFLX3MDKDBu
+## 🚀 Comenzar
 
-## Run Locally
+Sigue estas instrucciones para obtener una copia del proyecto y ejecutarlo en tu máquina local.
 
-**Prerequisites:**  Node.js
+### Prerrequisitos
 
+*   [Node.js](https://nodejs.org/) instalado en tu sistema.
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+### Instalación y Ejecución
+
+1.  **Instalar dependencias:**
+    ```bash
+    npm install
+    ```
+
+2.  **Configuración de Entorno:**
+    Si la aplicación requiere acceso a la API de Gemini, asegúrate de configurar tu clave.
+    Crea un archivo `.env.local` en la raíz del proyecto y añade:
+    ```env
+    GEMINI_API_KEY=tu_clave_api_aqui
+    ```
+
+3.  **Iniciar servidor de desarrollo:**
+    ```bash
+    npm run dev
+    ```
+
+## 🛠️ Tecnologías
+
+*   [React](https://react.dev/) - Biblioteca para interfaces de usuario.
+*   [Vite](https://vitejs.dev/) - Entorno de desarrollo rápido.
+*   [TypeScript](https://www.typescriptlang.org/) - JavaScript con tipado estático.
+
+## 📦 Despliegue
+
+El proyecto está configurado para desplegarse en GitHub Pages.
+
+```bash
+npm run deploy
+```
+
+Visita la aplicación desplegada: [https://gonsaliyo7-alt.github.io/opotest_penitenciarias](https://gonsaliyo7-alt.github.io/opotest_penitenciarias)
