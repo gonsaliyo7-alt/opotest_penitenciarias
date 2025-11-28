@@ -4,6 +4,7 @@ export interface Question {
   options: string[];
   correctAnswer: number;
   scenario?: string; // Campo opcional para el supuesto específico de esta pregunta (o grupo de preguntas)
+  explanation?: string; // Explicación de por qué la respuesta es correcta
 }
 
 export interface Test {
@@ -17,6 +18,7 @@ export interface Test {
 export interface TestResult {
   score: number;
   status: 'passed' | 'failed';
+  totalQuestions?: number;
 }
 
 export interface TestResults {

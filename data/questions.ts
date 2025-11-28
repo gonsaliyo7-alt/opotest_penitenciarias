@@ -94,8 +94,16 @@ const quickTestPlaceholder: Test = {
   totalQuestions: 10,
 };
 
+const aiTestPlaceholder: Test = {
+  id: 'test-ai',
+  title: 'Test por IA (Generativo)',
+  questions: [],
+  totalQuestions: 0,
+};
+
 // 3. Exportar todos los tests
 export const TESTS_DATA: Test[] = [
+  aiTestPlaceholder,
   survivalTestPlaceholder,
   failedQuestionsTestPlaceholder,
   infiniteTestPlaceholder,
