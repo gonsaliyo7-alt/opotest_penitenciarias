@@ -20,6 +20,11 @@ import { TEST_17 } from './tests/test-17';
 import { TEST_18 } from './tests/test-18';
 import { TEST_19 } from './tests/test-19';
 import { TEST_20 } from './tests/test-20';
+import { TEST_EXAMEN_2021 } from './tests/test-examen-2021';
+import { TEST_EXAMEN_2025 } from './tests/test-examen-2025';
+import { TEST_EXAMEN_2019 } from './tests/test-examen-2019';
+import { TEST_EXAMEN_2022 } from './tests/test-examen-2022';
+import { TEST_EXAMEN_2020 } from './tests/test-examen-2020';
 
 // Importar nuevos tests específicos por tema
 import { TEST_TOPIC_1, TEST_TOPIC_2, TEST_TOPIC_3, TEST_TOPIC_4, TEST_TOPIC_5, TEST_TOPIC_6, TEST_TOPIC_7, TEST_TOPIC_8, TEST_TOPIC_9, TEST_TOPIC_10 } from './tests/topics-block-1';
@@ -31,6 +36,11 @@ import { TEST_TOPIC_41, TEST_TOPIC_42, TEST_TOPIC_43, TEST_TOPIC_44, TEST_TOPIC_
 const EXISTING_TESTS = [
   TEST_1, TEST_2, TEST_3, TEST_4, TEST_5, TEST_6, TEST_7, TEST_8, TEST_9, TEST_10,
   TEST_11, TEST_12, TEST_13, TEST_14, TEST_15, TEST_16, TEST_17, TEST_18, TEST_19, TEST_20,
+  TEST_EXAMEN_2021,
+  TEST_EXAMEN_2025,
+  TEST_EXAMEN_2019,
+  TEST_EXAMEN_2022,
+  TEST_EXAMEN_2020,
 ];
 
 const SPECIFIC_TOPIC_TESTS = [
@@ -101,9 +111,25 @@ const aiTestPlaceholder: Test = {
   totalQuestions: 0,
 };
 
+const aiKoTestPlaceholder: Test = {
+  id: 'test-ai-ko',
+  title: 'Test IA K.O. (Generativo - 3 Vidas)',
+  questions: [],
+  totalQuestions: 0,
+};
+
+const koExamTestPlaceholder: Test = {
+  id: 'test-ko-exams',
+  title: 'Test del K.O. (Exámenes 2019-2025) - 3 Vidas',
+  questions: [],
+  totalQuestions: 0,
+};
+
 // 3. Exportar todos los tests
 export const TESTS_DATA: Test[] = [
   aiTestPlaceholder,
+  aiKoTestPlaceholder,
+  koExamTestPlaceholder,
   survivalTestPlaceholder,
   failedQuestionsTestPlaceholder,
   infiniteTestPlaceholder,

@@ -103,10 +103,27 @@ function App() {
             testWithQuestions.totalQuestions = failedQuestions.length;
 
         } else if (testId === 'test-infinite' || testId === 'test-survival') {
-            // Cargamos TODAS las preguntas disponibles en la base de datos, barajadas
             const allQuestionsShuffled = getRandomQuestions(ALL_QUESTIONS, ALL_QUESTIONS.length);
             testWithQuestions.questions = allQuestionsShuffled.map(shuffleQuestionOptions);
             testWithQuestions.totalQuestions = allQuestionsShuffled.length;
+        } else if (testId === 'test-ko-exams') {
+             // Filtrar los tests de examen (2019, 2020, 2021, 2022, 2025)
+             const examTests = TESTS_DATA.filter(t => [
+                'test-examen-2019',
+                'test-examen-2020',
+                'test-examen-2021',
+                'test-examen-2022',
+                'test-examen-2025'
+             ].includes(t.id));
+
+             // Aplanar todas las preguntas
+             const allExamQuestions = examTests.flatMap(t => t.questions);
+             
+             // Barajar preguntas
+             const shuffledQuestions = getRandomQuestions(allExamQuestions, allExamQuestions.length);
+
+             testWithQuestions.questions = shuffledQuestions.map(shuffleQuestionOptions);
+             testWithQuestions.totalQuestions = shuffledQuestions.length;
         }
         // Si es otro test dinámico (General o Rápido)
         else if (testTemplate.totalQuestions && testTemplate.questions.length === 0) {
@@ -163,7 +180,7 @@ function App() {
         // Los casos prácticos dependen del texto del supuesto y no tiene sentido repasarlos aisladamente.
         // Las preguntas de IA son generadas al momento y no existen en la base de datos para un futuro repaso.
         const isPracticalCase = PRACTICAL_CASES.some(t => t.id === testId);
-        const isAiTest = testId === 'test-ai';
+        const isAiTest = testId === 'test-ai' || testId === 'test-ai-ko';
 
         if (details && !isPracticalCase && !isAiTest) {
             const currentFailedSet = new Set(failedQuestionTexts);
@@ -237,12 +254,12 @@ function App() {
         // ---------------------------------
 
         // Lógica Específica para Supervivencia
-        if (testId === 'test-survival') {
+        if (testId === 'test-survival' || testId === 'test-ko-exams' || testId === 'test-ai-ko') {
             // En supervivencia, el 'score' son los aciertos (la racha).
-            if (score > survivalRecord) {
+            if (testId === 'test-survival' && score > survivalRecord) {
                 setSurvivalRecord(score);
-                // Podríamos añadir una alerta visual aquí
             }
+            // TODO: Crear récord específico para KO Exams si se desea
             // No guardamos status de passed/failed en cookie para supervivencia, solo el record en localStorage
         } else {
             // Para aprobar, se necesita un 80% de aciertos
@@ -262,7 +279,7 @@ function App() {
         }
 
         // En supervivencia, mostramos los resultados de "hasta donde has llegado"
-        if (testId === 'test-survival') {
+        if (testId === 'test-survival' || testId === 'test-ko-exams' || testId === 'test-ai-ko') {
             setLastResult({
                 score: score,
                 status: 'failed' // Siempre es failed al final en muerte súbita (o passed si llega al final de todas las preguntas, improbable)

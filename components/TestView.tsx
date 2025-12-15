@@ -10,8 +10,8 @@ interface TestViewProps {
 }
 
 const TestView: React.FC<TestViewProps> = ({ test, onComplete, onExit }) => {
-  const isAI = test.id === 'test-ai';
-  const isSurvival = test.id === 'test-survival';
+  const isAI = test.id === 'test-ai' || test.id === 'test-ai-ko';
+  const isSurvival = test.id === 'test-survival' || test.id === 'test-ko-exams' || test.id === 'test-ai-ko';
   const isInfinite = test.id === 'test-infinite';
 
   // State for AI Mode
